@@ -3,513 +3,1542 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Henri-Alexandre de Croÿ-Solre — Aerospace Engineer (MSc). GNC, Systems, UAVs, Space mission design. Portfolio and experience." />
-  <title>Henri-Alexandre de Croÿ-Solre — Aerospace Engineer</title>
+  <meta name="color-scheme" content="light dark" />
+
+  <title>Henri-Alexandre de Croÿ-Solre — Aerospace Engineer (MSc) | GNC • Systems • UAVs • Mission Design</title>
+  <meta name="description" content="Aerospace Engineer (MSc) focused on GNC, systems engineering, UAV autonomy, and space mission design. Featured case studies with quantified results; filterable project portfolio; fast, accessible, GitHub Pages-ready." />
+  <link rel="canonical" href="https://hadecroy.github.io/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Henri-Alexandre de Croÿ-Solre — Aerospace Engineer (MSc)" />
+  <meta property="og:description" content="GNC • Systems Engineering • UAVs • Space Mission Design — featured case studies with quantified outcomes and a filterable aerospace project portfolio." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hadecroy.github.io/" />
+  <!-- TODO: add /og.png to your repo for rich previews -->
+  <meta property="og:image" content="https://hadecroy.github.io/og.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Henri-Alexandre de Croÿ-Solre — Aerospace Engineer (MSc)" />
+  <meta name="twitter:description" content="GNC • Systems • UAVs • Mission Design — featured case studies + project portfolio." />
+  <!-- TODO: add /og.png to your repo -->
+  <meta name="twitter:image" content="https://hadecroy.github.io/og.png" />
 
   <style>
     :root{
-      --bg:#0b0f14;
-      --card:#111826;
-      --text:#e8eef6;
-      --muted:#a9b6c6;
-      --line:#243146;
-      --accent:#7dd3fc;
-      --chip:#0f2233;
+      --bg: #0b0d10;
+      --panel: #10141a;
+      --text: #e9edf2;
+      --muted: #b4c0cf;
+      --faint: #7f8da3;
+      --border: rgba(255,255,255,.12);
+      --border2: rgba(255,255,255,.18);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+
+      --accent: #9ad1ff;
+      --accent2: #b8ffcf;
+      --warn: #ffd3a2;
+
+      --radius: 18px;
+      --radius2: 26px;
+
+      --max: 1120px;
+      --pad: clamp(16px, 3vw, 28px);
+      --gap: clamp(12px, 2vw, 20px);
+
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      --lh: 1.55;
     }
+    :root[data-theme="light"]{
+      --bg: #fbfcfe;
+      --panel: #ffffff;
+      --text: #121723;
+      --muted: #334155;
+      --faint: #64748b;
+      --border: rgba(16,23,35,.14);
+      --border2: rgba(16,23,35,.18);
+      --shadow: 0 12px 28px rgba(16,23,35,.10);
+      --accent: #0ea5e9;
+      --accent2: #10b981;
+      --warn: #f59e0b;
+    }
+
     *{box-sizing:border-box}
+    html, body{height:100%}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1200px 800px at 15% 10%, rgba(125,211,252,0.12), transparent 55%),
-                  radial-gradient(900px 700px at 90% 30%, rgba(167,139,250,0.10), transparent 55%),
+      font-family: var(--font);
+      line-height: var(--lh);
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(154,209,255,.18), transparent 60%),
+                  radial-gradient(900px 500px at 90% 10%, rgba(184,255,207,.14), transparent 55%),
+                  radial-gradient(1000px 800px at 60% 120%, rgba(255,211,162,.10), transparent 55%),
                   var(--bg);
-      color:var(--text);
-      line-height:1.55;
     }
-    a{color:var(--accent); text-decoration:none}
-    a:hover{text-decoration:underline}
-    .wrap{max-width:1050px; margin:0 auto; padding:28px 18px 60px}
+
+    a{color:inherit}
+    a:hover{opacity:.9}
+    .container{max-width:var(--max); margin:0 auto; padding: 0 var(--pad)}
+    .skip{
+      position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden;
+    }
+    .skip:focus{
+      left: var(--pad); top: var(--pad); width:auto; height:auto;
+      padding: 10px 12px;
+      background: var(--panel);
+      border: 1px solid var(--border2);
+      border-radius: 12px;
+      z-index: 9999;
+    }
+    :focus-visible{
+      outline: 3px solid color-mix(in oklab, var(--accent), white 12%);
+      outline-offset: 3px;
+      border-radius: 12px;
+    }
+
     header{
-      display:grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap:18px;
-      align-items:start;
-      margin-bottom:18px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: color-mix(in oklab, var(--bg), transparent 25%);
+      border-bottom: 1px solid var(--border);
     }
-    @media (max-width: 900px){ header{grid-template-columns:1fr} }
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 12px;
+      padding: 12px 0;
+    }
+    .brand{
+      display:flex; align-items:baseline; gap: 10px;
+      min-width: 240px;
+    }
+    .brand strong{font-size: 14.5px; letter-spacing:.2px}
+    .brand span{
+      font-size: 12.5px;
+      color: var(--faint);
+    }
+
+    nav{
+      display:flex; gap: 10px;
+      align-items:center;
+      flex-wrap: wrap;
+      justify-content:flex-end;
+    }
+    .navlink{
+      text-decoration:none;
+      font-size: 13px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--muted);
+    }
+    .navlink:hover{
+      border-color: var(--border);
+      background: color-mix(in oklab, var(--panel), transparent 20%);
+      color: var(--text);
+    }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border2);
+      background: color-mix(in oklab, var(--panel), transparent 10%);
+      box-shadow: none;
+      text-decoration:none;
+      font-size: 13px;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn.primary{
+      border-color: color-mix(in oklab, var(--accent), var(--border2) 45%);
+      background: linear-gradient(135deg,
+        color-mix(in oklab, var(--accent), transparent 82%),
+        color-mix(in oklab, var(--accent2), transparent 88%)
+      );
+    }
+    .btn.ghost{
+      background: transparent;
+      border-color: var(--border);
+      color: var(--muted);
+    }
+
+    main{padding: 26px 0 70px}
+    section{padding: 26px 0}
+    h1,h2,h3{line-height:1.15; margin:0}
+    h1{font-size: clamp(28px, 4vw, 44px); letter-spacing: -.4px}
+    h2{font-size: clamp(18px, 2.2vw, 26px); letter-spacing: -.2px}
+    h3{font-size: 16px}
+
     .hero{
-      padding:18px 18px 16px;
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(17,24,38,0.92), rgba(17,24,38,0.70));
-      border-radius:16px;
+      padding-top: 26px;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: var(--gap);
+      align-items: start;
     }
-    .name{font-size:30px; font-weight:800; letter-spacing:0.2px; margin:0 0 6px}
-    .tagline{margin:0 0 10px; color:var(--muted)}
-    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    @media (max-width: 900px){
+      .hero{grid-template-columns: 1fr}
+      .brand{min-width:auto}
+    }
+
+    .card{
+      background: color-mix(in oklab, var(--panel), transparent 2%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+    }
+    .card.pad{padding: clamp(16px, 2.6vw, 22px)}
+    .subtle{color: var(--muted)}
+    .muted{color: var(--faint)}
+    .kicker{
+      display:inline-flex; gap: 8px; align-items:center;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .dot{
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px color-mix(in oklab, var(--accent), transparent 85%);
+    }
+
+    .chips{
+      display:flex; flex-wrap:wrap; gap: 8px;
+      margin: 14px 0 18px;
+    }
     .chip{
-      font-size:12px; padding:6px 10px; border-radius:999px;
-      background:rgba(15,34,51,0.75);
-      border:1px solid rgba(36,49,70,0.9);
-      color:var(--text);
-      white-space:nowrap;
+      font-size: 12.5px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--panel), transparent 8%);
+      color: var(--muted);
     }
-    .side{
-      padding:18px;
-      border:1px solid var(--line);
-      background:rgba(17,24,38,0.65);
-      border-radius:16px;
+    .chip strong{color: var(--text); font-weight:600}
+    .ctaRow{
+      display:flex; flex-wrap: wrap; gap: 10px;
+      margin-top: 14px;
     }
-    .side h2{margin:0 0 10px; font-size:14px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted)}
-    .kv{display:grid; gap:8px}
-    .kv div{display:flex; justify-content:space-between; gap:10px; border-bottom:1px dashed rgba(36,49,70,0.7); padding-bottom:8px}
-    .kv div:last-child{border-bottom:none; padding-bottom:0}
-    .k{color:var(--muted)}
-    .v{text-align:right}
-    .grid{
+
+    .quick{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .kv{
+      display:grid;
+      gap: 6px;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px dashed var(--border);
+      background: color-mix(in oklab, var(--panel), transparent 12%);
+    }
+    .kv b{font-size: 12px; color: var(--faint)}
+    .kv div{font-size: 13.5px; color: var(--text)}
+    .pillrow{display:flex; flex-wrap:wrap; gap: 8px}
+    .pill{
+      font-size: 12px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .grid2{
       display:grid;
       grid-template-columns: 1fr 1fr;
-      gap:16px;
-      margin-top:14px;
+      gap: var(--gap);
     }
-    @media (max-width: 900px){ .grid{grid-template-columns:1fr} }
-    .card{
-      border:1px solid var(--line);
-      background:rgba(17,24,38,0.65);
-      border-radius:16px;
-      padding:16px 16px 14px;
+    @media (max-width: 900px){ .grid2{grid-template-columns:1fr} }
+
+    .sectionHead{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 14px;
     }
-    .card h2{
-      margin:0 0 10px;
-      font-size:14px;
-      letter-spacing:0.12em;
-      text-transform:uppercase;
-      color:var(--muted);
+    .sectionHead p{margin:0; color: var(--muted); font-size: 13.5px; max-width: 70ch}
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--gap);
     }
-    .item{padding:12px 0; border-top:1px solid rgba(36,49,70,0.55)}
-    .item:first-of-type{border-top:none; padding-top:0}
-    .topline{
-      display:flex; flex-wrap:wrap; gap:10px;
-      align-items:baseline; justify-content:space-between;
+    .col-6{grid-column: span 6}
+    .col-4{grid-column: span 4}
+    .col-8{grid-column: span 8}
+    .col-12{grid-column: span 12}
+    @media (max-width: 900px){
+      .col-6,.col-4,.col-8{grid-column: span 12}
     }
-    .role{font-weight:750}
-    .meta{color:var(--muted); font-size:13px}
-    ul{margin:8px 0 0 18px; padding:0}
-    li{margin:6px 0}
+
+    .projCard{
+      border-radius: var(--radius2);
+      overflow:hidden;
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--panel), transparent 2%);
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+      min-height: 280px;
+    }
+    .thumb{
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg,
+        color-mix(in oklab, var(--accent), transparent 88%),
+        color-mix(in oklab, var(--accent2), transparent 90%)
+      );
+      padding: 14px;
+    }
+    .thumb svg{display:block; width:100%; height:auto}
+    .projBody{padding: 14px 16px 16px}
+    .projTitle{
+      display:flex; align-items:baseline; justify-content:space-between; gap: 10px;
+      margin-bottom: 6px;
+    }
+    .projTitle a{text-decoration:none}
+    .meta{
+      font-size: 12.5px;
+      color: var(--faint);
+    }
+    .bullets{margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-size: 13.5px}
+    .tags{display:flex; flex-wrap:wrap; gap: 7px; margin-top: 12px}
+    .tag{
+      font-family: var(--mono);
+      font-size: 11.5px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: color-mix(in oklab, var(--panel), transparent 12%);
+    }
+
+    .case{
+      padding: clamp(16px, 2.6vw, 22px);
+      border-radius: var(--radius2);
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--panel), transparent 2%);
+      box-shadow: var(--shadow);
+    }
+    .caseTop{
+      display:flex; align-items:flex-start; justify-content:space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .caseTop .titleBlock{min-width: min(620px, 100%)}
+    .caseTop p{margin: 8px 0 0; color: var(--muted); font-size: 13.5px}
+    .caseGrid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: var(--gap);
+      margin-top: 12px;
+    }
+    @media (max-width: 900px){ .caseGrid{grid-template-columns: 1fr} }
+
+    .panel{
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: color-mix(in oklab, var(--panel), transparent 6%);
+      padding: 14px 14px 12px;
+    }
+    .panel h3{margin-bottom: 8px}
+    .panel ul{margin: 0; padding-left: 18px; color: var(--muted); font-size: 13.5px}
+    .panel li{margin: 6px 0}
+
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 10px;
+    }
+    .g6{grid-column: span 6}
+    .g12{grid-column: span 12}
+    @media (max-width: 700px){
+      .g6{grid-column: span 12}
+    }
+    figure{
+      margin:0;
+      border-radius: 16px;
+      overflow:hidden;
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--panel), transparent 8%);
+    }
+    figcaption{
+      font-size: 12px;
+      color: var(--faint);
+      padding: 8px 10px 10px;
+      border-top: 1px solid var(--border);
+    }
+    figure svg{display:block; width:100%; height:auto}
+
+    .filters{
+      display:flex; flex-wrap:wrap; gap: 8px;
+      align-items:center;
+      margin: 12px 0 14px;
+    }
+    .fbtn{
+      font-size: 12.5px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--panel), transparent 10%);
+      color: var(--muted);
+      cursor:pointer;
+    }
+    .fbtn[aria-pressed="true"]{
+      border-color: color-mix(in oklab, var(--accent), var(--border2) 45%);
+      background: linear-gradient(135deg,
+        color-mix(in oklab, var(--accent), transparent 85%),
+        color-mix(in oklab, var(--accent2), transparent 90%)
+      );
+      color: var(--text);
+    }
+
+    .twoCol{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+    }
+    @media (max-width: 900px){ .twoCol{grid-template-columns:1fr} }
+
+    details{
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--panel), transparent 6%);
+      padding: 12px 14px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:600;
+      color: var(--text);
+    }
+    details p, details ul{color: var(--muted); font-size: 13.5px}
+    details ul{padding-left: 18px}
+
     .footer{
-      margin-top:18px;
-      padding-top:14px;
-      border-top:1px solid rgba(36,49,70,0.6);
-      color:var(--muted);
-      font-size:13px;
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      gap:10px;
+      margin-top: 30px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      color: var(--faint);
+      font-size: 12.5px;
+      display:flex; justify-content:space-between; align-items:center; gap: 12px; flex-wrap:wrap;
     }
-    .btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
-    .btn{
-      display:inline-block;
-      padding:9px 12px;
-      border-radius:10px;
-      border:1px solid rgba(36,49,70,0.9);
-      background:rgba(15,34,51,0.55);
-      color:var(--text);
-      font-weight:650;
-      font-size:13px;
+
+    @media (prefers-reduced-motion: reduce){
+      *{scroll-behavior:auto !important; transition:none !important; animation:none !important}
+      .btn:hover{transform:none}
     }
-    .btn:hover{background:rgba(15,34,51,0.75); text-decoration:none}
-    .note{color:var(--muted); font-size:12px; margin-top:10px}
   </style>
+
+  <!-- JSON-LD: include only info visible on the page -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Henri-Alexandre de Croÿ-Solre",
+    "jobTitle":"Aerospace Engineer (MSc)",
+    "url":"https://hadecroy.github.io/",
+    "sameAs":[
+      "https://www.linkedin.com/in/h-a-de-croy",
+      "https://github.com/hadecroy"
+    ],
+    "address":{
+      "@type":"PostalAddress",
+      "addressLocality":"London",
+      "addressCountry":"GB"
+    },
+    "knowsLanguage":[
+      "French","Spanish","English","Italian"
+    ],
+    "email":"mailto:[INSERT_EMAIL]"
+  }
+  </script>
 </head>
 
 <body>
-  <div class="wrap">
-    <header>
-      <div class="hero">
-        <h1 class="name">Henri-Alexandre de Croÿ-Solre</h1>
-        <p class="tagline">Aerospace Engineer (MSc) — GNC · Systems Engineering · UAVs · Space Mission Design</p>
+  <a class="skip" href="#content">Skip to content</a>
 
-        <div class="chips">
-          <span class="chip">French (native)</span>
-          <span class="chip">Spanish (native)</span>
-          <span class="chip">English (fluent)</span>
-          <span class="chip">Italian (basic)</span>
+  <header>
+    <div class="container">
+      <div class="topbar">
+        <div class="brand" aria-label="Site header">
+          <strong>Henri-Alexandre de Croÿ-Solre</strong>
+          <span>Aerospace Engineer (MSc)</span>
         </div>
 
-        <div class="btnrow">
-          <a class="btn" href="https://www.linkedin.com/in/h-a-de-croy" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn" href="https://github.com/hadecroy" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn" href="mailto:henridecroy@gmail.com">Email</a>
+        <nav aria-label="Primary">
+          <a class="navlink" href="#featured">Featured</a>
+          <a class="navlink" href="#projects">All projects</a>
+          <a class="navlink" href="#experience">Experience</a>
+          <a class="navlink" href="#education">Education</a>
+          <a class="navlink" href="#contact">Contact</a>
+          <button id="themeBtn" class="btn ghost" type="button" aria-label="Toggle theme">Theme</button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="content" class="container">
+    <!-- HERO -->
+    <section class="hero" aria-label="Hero">
+      <div class="card pad">
+        <div class="kicker"><span class="dot" aria-hidden="true"></span> Target roles: GNC • Systems • Mission Design • UAV Autonomy • Space Mission Analysis • Structures/FEA</div>
+        <h1>Aerospace Engineer (MSc) — GNC · Systems Engineering · UAVs · Space Mission Design</h1>
+        <p class="subtle" style="margin:10px 0 0; max-width: 75ch">
+          Proof-of-work portfolio: skimmable in 30 seconds, with deeper case studies for technical reviewers.
+          Public-safe summaries only; deeper technical detail available on request.
+        </p>
+
+        <div class="chips" aria-label="Quantified highlights">
+          <span class="chip"><strong>20.4%</strong> faster transfer (diffractive vs reflective sail)</span>
+          <span class="chip"><strong>~40%</strong> mass reduction under yield constraints (optimisation)</span>
+          <span class="chip"><strong>R² 0.92/0.86</strong> surrogate model (train/validation)</span>
+          <span class="chip"><strong>15%</strong> win margin (flight performance competition)</span>
+          <span class="chip"><strong>Top 7 / ~300</strong> Airbus design competition</span>
         </div>
 
-        <p class="note">This site is intentionally lightweight: one file, fast load, easy to maintain.</p>
+        <div class="ctaRow">
+          <!-- TODO: add a PDF file to your repo and update the href -->
+          <a class="btn primary" href="/Henri-Alexandre-de-Croy-Solre-CV.pdf">Download CV (PDF)</a>
+          <a class="btn" href="#featured">View featured case studies</a>
+          <a class="btn" href="#contact">Contact</a>
+        </div>
+
+        <p class="muted" style="margin:14px 0 0; font-size: 12.5px">
+          Built for GitHub Pages • no build step • accessible • fast
+        </p>
       </div>
 
-      <aside class="side">
-        <h2>Quick info</h2>
-        <div class="kv">
-          <div><span class="k">Location</span><span class="v">London, UK</span></div>
-          <div><span class="k">Work authorisation</span><span class="v">EU passport · Right to work in UK</span></div>
-          <div><span class="k">Citizenship</span><span class="v">Belgian · Colombian</span></div>
-          <div><span class="k">Background</span><span class="v">Brought up in London & Switzerland</span></div>
-          <div><span class="k">Phone</span><span class="v"><a href="tel:+447908529936">+44 7908 529936</a></span></div>
+      <aside class="quick" aria-label="Quick info">
+        <div class="card pad">
+          <h2 style="margin-bottom: 10px">Quick info</h2>
+          <div class="kv">
+            <b>Location</b>
+            <div>London, UK</div>
+          </div>
+          <div class="kv">
+            <b>Work authorisation</b>
+            <div>Right to work in the UK</div>
+          </div>
+          <div class="kv">
+            <b>Languages</b>
+            <div class="pillrow" aria-label="Languages">
+              <span class="pill">French (native)</span>
+              <span class="pill">Spanish (native)</span>
+              <span class="pill">English (fluent)</span>
+              <span class="pill">Italian (basic)</span>
+            </div>
+          </div>
+          <div class="kv">
+            <b>Links</b>
+            <div class="pillrow">
+              <a class="pill" href="https://www.linkedin.com/in/h-a-de-croy" rel="noopener">LinkedIn</a>
+              <a class="pill" href="https://github.com/hadecroy" rel="noopener">GitHub</a>
+              <a class="pill" href="mailto:[INSERT_EMAIL]">Email</a>
+            </div>
+          </div>
+          <div class="kv">
+            <b>Interests</b>
+            <div class="pillrow">
+              <span class="pill">Latin dance teacher</span>
+              <span class="pill">Music production & DJing</span>
+              <span class="pill">Martial arts (green belt)</span>
+              <span class="pill">Scuba diving (PADI)</span>
+            </div>
+          </div>
         </div>
       </aside>
-    </header>
-
-    <div class="grid">
-      <section class="card">
-        <h2>Education</h2>
-
-        <div class="item">
-          <div class="topline">
-            <span class="role">University of Bristol — MSc Aerospace Engineering</span>
-            <span class="meta">Sep 2025 – Present</span>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="topline">
-            <span class="role">University of Glasgow — BEng (Hons) Aeronautical Engineering</span>
-            <span class="meta">Sep 2020 – Jun 2024</span>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="topline">
-            <span class="role">Worth School — A-Levels: AAAA (Maths, Physics, Chemistry, Biology)</span>
-            <span class="meta">Sep 2015 – Jul 2020</span>
-          </div>
-          <ul>
-            <li>Prefect & Scholarship: top five students; academic duties across ~700 students</li>
-            <li>Chartered Management Qualification Level 3 (leadership & management)</li>
-            <li>Additional Mathematics (FSMQ): Second Class grade (advanced GCSE-level qualification)</li>
-            <li>GCSEs: A* A* A* A* A* A* A* A A A B (Mathematics, Physics, Chemistry, Biology, French, Spanish, Religious Studies, Latin, History, English Literature, English Language)
-            </li>
-          </ul>
-
-        </div>
-
-      </section>
-
-
-      <section class="card">
-        <h2>Skills</h2>
-        <div class="item">
-          <div class="topline">
-            <span class="role">Tools</span>
-            <span class="meta">Hands-on</span>
-          </div>
-          <ul>
-            <li>MATLAB, Simulink, Python, GMAT, ArduPilot</li>
-            <li>Fusion 360, SolidWorks, Revit</li>
-            <li>Abaqus, NASTRAN, LabVIEW</li>
-            <li>LaTeX</li>
-          </ul>
-        </div>
-
-        <div class="item">
-          <div class="topline">
-            <span class="role">Interests</span>
-            <span class="meta">Outside engineering</span>
-          </div>
-          <ul>
-            <li>Latin dance teacher</li>
-            <li>Music production & DJing</li>
-            <li>Martial arts (green belt)</li>
-            <li>Scuba diving (PADI)</li>
-          </ul>
-        </div>
-      </section>
-    </div>
-
-    <section class="card" style="margin-top:16px;">
-      <h2>Aerospace experience</h2>
-
-      <div class="item">
-        <div class="topline">
-          <span class="role">BVLOS UAV Swarm Mission Design (Law-Enforcement / Counter-Narcotics) — UAV Systems Engineer</span>
-          <span class="meta">Bristol, UK · Sep 2025 – Dec 2025</span>
-        </div>
-        <ul>
-          <li>Designed BVLOS UAV swarm field campaign for coca-eradication ISR and selective herbicide spraying (Huallaga, Peru)</li>
-          <li>Retrofitted DJI Agras multirotors and fixed-wing UAVs for mapping and human-supervised selective spraying workflows</li>
-          <li>Planned BVLOS routes (ArduPilot), integrated multispectral payloads, built Python waypoint/sensor simulator</li>
-          <li>Delivered deployable package with validated requirements, CONOPS, and regulatory/risk controls ready for pilot trials</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="topline">
-          <span class="role">SBIRS Constellation Re-Flight Mission Design (Lockheed Case) — Systems & Mission Design Engineer</span>
-          <span class="meta">Bristol, UK · Sep 2025 – Dec 2025</span>
-        </div>
-        <ul>
-          <li>Led mission architecture for a defence bid to re-fly SBIRS GEO + HEO, enhancing global missile warning</li>
-          <li>Developed systems engineering design (V-Model): CONOPS, requirements, subsystem design, V&V, orbital modelling</li>
-          <li>Built GMAT simulations and led trade-offs across thermal control, data handling, and key subsystems</li>
-          <li>Delivered traceable, validated, ECSS-aligned bid deck integrating subsystems into final architecture/configuration</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="topline">
-          <span class="role">Evaluation of End-to-End Solar Observation Mission Architecture (“Panoptes”) — Mission Systems Reviewer</span>
-          <span class="meta">Bristol, UK · Sep 2025 – Dec 2025</span>
-        </div>
-        <ul>
-          <li>Critically evaluated Final Engineering Design Review (FEDR) for a solar observation satellite</li>
-          <li>Assessed alignment across objectives, requirements, CONOPS, architecture, and subsystems (e.g., propulsion)</li>
-          <li>Identified failures in requirements, configuration, and integration; recommended targeted improvements</li>
-          <li>Delivered evidence-based critique highlighting traceability and architectural risks (distinction)</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="topline">
-          <span class="role">Aircraft Design & Flight Performance Competition — Aerodynamics & Structural Lead</span>
-          <span class="meta">Bristol, UK · Oct 2025</span>
-        </div>
-        <ul>
-          <li>Built and optimised a model aircraft for lowest-speed sustained flight</li>
-          <li>Increased camber/aerofoil thickness; minimised mass via structural simplification and V-tail integration</li>
-          <li>Won competition: lowest sustained flight speed by 15% (best lift-to-weight efficiency)</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="topline">
-          <span class="role">AI-Driven Structural Optimisation of Cantilever Plates — Applied AI Engineer</span>
-          <span class="meta">Bristol, UK · Nov 2025 – Dec 2025</span>
-        </div>
-        <ul>
-          <li>Developed AI framework to minimise mass under combined loading using surrogate modelling (TensorFlow)</li>
-          <li>Trained DNN on FEA data to predict stress fields from thickness inputs; R² = 0.92/0.86 (train/validation)</li>
-          <li>Optimised thickness with SLSQP under yield constraints; achieved compliant ~40% mass reduction</li>
-          <li>Proposed digital twin concept with sensor data fusion for predictive maintenance</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="topline">
-          <span class="role">Diffractive Solar Sailing Research Placement — Spaceflight Dynamics, Navigation & Control Engineer</span>
-          <span class="meta">Glasgow, UK · Oct 2023 – Apr 2024</span>
-        </div>
-        <ul>
-          <li>Modelled diffractive sail dynamics in MATLAB (spiralling + inclination cranking for solar probes)</li>
-          <li>Validated diffractive sails reached target orbit 20.4% faster than reflective sails (heuristic force law roll manoeuvres)</li>
-          <li>Explored diffraction angle trade-offs: 112.5° improved radial performance slightly but reduced inclination performance</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="topline">
-          <span class="role">Autonomous Vehicle Guidance Systems Design — Control Systems & Path Planning Developer</span>
-          <span class="meta">Glasgow, UK · Feb 2024 – Apr 2024</span>
-        </div>
-        <ul>
-          <li>Designed collision-avoidance using artificial potential fields</li>
-          <li>Optimised UAV lateral motion with polynomial trajectories and constrained optimisation (fmincon)</li>
-          <li>Implemented Q-learning (epsilon-greedy), trained over 1000 episodes for optimal pathfinding in MATLAB</li>
-          <li>Created 2D autonomous driving scenario for A*, Dijkstra, and RRT* integration</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="topline">
-          <span class="role">Utility Helicopter Design (Bell 427 Retrofit) — Head of Tail Rotor Design</span>
-          <span class="meta">Glasgow, UK · Jan 2024 – Apr 2024</span>
-        </div>
-        <ul>
-          <li>Optimised tail rotor to handle ~133% torque increase with minimal added mass</li>
-          <li>Used Blade Element Momentum Theory; sized rotor ratios and lever arm from historical data</li>
-          <li>Defined incidence angles (Boeing VR-5 root, NACA0012 tip) and modelled planform in Fusion 360</li>
-          <li>Reduced thrust disparity via aerofoil twist to reduce failure risk</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="topline">
-          <span class="role">Hybrid STOL Regional Aircraft Design (“BeEco”) — Performance & Mass Calculations Engineer</span>
-          <span class="meta">Glasgow, UK · Jan 2024 – Jun 2024</span>
-        </div>
-        <ul>
-          <li>Designed hybrid aircraft to replace Twin Otter on Scottish island routes (passenger + medevac)</li>
-          <li>Analysed hybrid-electric + biofuel propulsion architecture; modelled mission performance and fuel fractions in MATLAB</li>
-          <li>Delivered STOL-compliant concept with ~20% efficiency improvement vs legacy baseline</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="topline">
-          <span class="role">Vibrational Analysis of Airplane Wing Model — Test Engineer / Vibrational & FEA Analyst</span>
-          <span class="meta">Glasgow, UK · Oct 2023 – Nov 2023</span>
-        </div>
-        <ul>
-          <li>Built Abaqus FEA model (hex-dominant mesh), extracted natural modes</li>
-          <li>Ran experimental vibration tests; recorded amplitude distribution using oscilloscope</li>
-          <li>Explained deltas between test and FEA: acoustic effects, supports, material interactions</li>
-          <li>Validated FEA trends via harmonic amplitude-position behaviour</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="topline">
-          <span class="role">Airbus Design Competition (GU Orbit) — Head of Engineering & In-Orbit Biological Systems</span>
-          <span class="meta">Stevenage, UK · Dec 2022 – Apr 2023</span>
-        </div>
-        <ul>
-          <li>Led integration across robotics, bioprinting, materials, thermal regulation, and deployment</li>
-          <li>Designed modular in-orbit organ bio-assembly factory; presented to Airbus executives</li>
-          <li>Designed magnetic levitation printer concept, storage, casing, heat exchangers, radiators</li>
-          <li>Top 7 finish out of ~300 teams</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="topline">
-          <span class="role">Wind Tunnel Investigation (Bluff Body + Delta Wing) — Aerodynamics & Test Engineer</span>
-          <span class="meta">Glasgow, UK · Jan 2023 – Mar 2023</span>
-        </div>
-        <ul>
-          <li>Measured pressure and wake data; analysed lift/drag, separation, vortices across flow regimes</li>
-          <li>Computed aerodynamic forces and centres in MATLAB; mapped vorticity using 7-hole probe data</li>
-          <li>Validated trends vs theoretical models; quantified drag variation with Reynolds number</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="topline">
-          <span class="role">Stress Concentration Factor Analysis — Structures & Stress Analysis Test Engineer</span>
-          <span class="meta">Glasgow, UK · Jan 2023 – Mar 2023</span>
-        </div>
-        <ul>
-          <li>Analysed Kt in perforated plate under tension using strain gauges, empirical, FEM, and ESDU methods</li>
-          <li>Used Mohr’s circle to determine principal stress; benchmarked accuracy across approaches</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="topline">
-          <span class="role">Instrument Landing System (ILS) Lateral Beam Design — Navigation Control Systems Developer</span>
-          <span class="meta">Glasgow, UK · Oct 2022 – Nov 2022</span>
-        </div>
-        <ul>
-          <li>Stabilised faulty ILS by tuning feedback control and signal filtering</li>
-          <li>Simulated in Simulink and cross-checked MATLAB outputs for consistency</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="topline">
-          <span class="role">Pitot Tube Rankine Fairing Design — Fluid Dynamics & MATLAB Modelling Engineer</span>
-          <span class="meta">Glasgow, UK · Sep 2022 – Dec 2022</span>
-        </div>
-        <ul>
-          <li>Derived potential flow / Rankine fairing model assumptions and equations; simulated flow fields in MATLAB</li>
-          <li>Determined optimal static pressure tapping locations; validated Bernoulli-based predictions</li>
-          <li>Achieved correction factor K &gt; 0.99 with tapping distance ~25.33 cm balancing accuracy/manufacturability</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="topline">
-          <span class="role">Acoustic Analysis of Cussons P9010e Turbojet Engine — Propulsion Acoustics Analyst</span>
-          <span class="meta">Glasgow, UK · Sep 2022 – Nov 2022</span>
-        </div>
-        <ul>
-          <li>Captured SPL distributions, thrust, and mass flows; analysed engine noise signature</li>
-          <li>Used Fourier analysis in MATLAB; linked thrust/rotational speed to SPL changes across frequency bands</li>
-          <li>Observed low-frequency noise dominated by shear forces in larger eddies</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="topline">
-          <span class="role">CubeSat Development (GU Orbit) — Mechanical Engineer</span>
-          <span class="meta">Glasgow, UK · Sep 2020 – Jun 2024</span>
-        </div>
-        <ul>
-          <li>Optimised structure of Astraeus CloudView CubeSat prototype for near-space/stratospheric testing</li>
-          <li>Designed modular frame and radar-reflecting rotational damper; performed FEA (SolidWorks)</li>
-          <li>Supported drag sail deployment testing; supported successful launch in Sep 2023</li>
-        </ul>
-      </div>
-
-      <div class="item">
-         <div class="topline">
-           <span class="role">Lockheed Martin × Virgin Galactic Scholarship (SSSUK space course)</span>
-           <span class="meta">Aug 2019</span>
-         </div>
-         <ul>
-           <li>Studied satellite technology, JWST spectroscopy and the aerospace engineering design process</li>
-           <li>Exposure to industry perspectives on reusability / recovery concepts and launch cost drivers</li>
-         </ul>
-       </div>
-      
     </section>
 
-    <section class="card" style="margin-top:16px;">
-      <h2>Business experience</h2>
-
-      <div class="item">
-        <div class="topline">
-          <span class="role">PropTech Connect Ltd — Head of Finance & Operations & Data Manager</span>
-          <span class="meta">London, UK · Sep 2024 – Present</span>
+    <!-- FEATURED -->
+    <section id="featured" aria-label="Featured case studies">
+      <div class="sectionHead">
+        <div>
+          <h2>Featured case studies</h2>
+          <p>Each case study follows a compact engineering story: objective → what I did → measurable result → how it was validated → what I’d improve next.</p>
         </div>
-        <ul>
-          <li>Manage finances and optimise operations for Europe’s largest Real Estate Tech Conference (6000+ delegates)</li>
-          <li>Oversee 75%+ of revenue: sponsorship contracts, ticket sales tracking, VAT returns, payments, credit control</li>
-          <li>Restored CRM/finance data integrity; corrected and optimised 28,000+ broken leads for the sales team</li>
-          <li>Previously acquired 400+ clients and managed ~97 speakers (Barclays, BNP Paribas, AXA)</li>
-        </ul>
+        <a class="btn ghost" href="#projects">Jump to all projects</a>
       </div>
 
-      <div class="item">
-        <div class="topline">
-          <span class="role">PropTech Connect Ltd — Head of Finance & Data Lead</span>
-          <span class="meta">London, UK · Nov 2024 – Aug 2025</span>
-        </div>
-        <ul>
-          <li>Built management accounts, led junior staff, and enforced credit control on sponsorship revenue</li>
-          <li>Worked with major clients including: Canada HC, Dubai Land Dept, Mitsubishi, Google, JP Morgan, McKinsey, Cisco, JLL</li>
-          <li>Troubleshot ticket data errors across ~34% of attendee database; fixed critical bugs affecting operations</li>
-        </ul>
-      </div>
+      <div class="cards" role="list">
+        <!-- Card 1 -->
+        <article class="projCard col-6" role="listitem">
+          <div class="thumb" aria-hidden="true">
+            <svg viewBox="0 0 1200 540" role="img" aria-label="Placeholder thumbnail">
+              <rect width="1200" height="540" fill="none"></rect>
+              <g opacity=".95">
+                <path d="M115 392 C 280 240, 370 260, 520 170 C 680 70, 820 120, 1040 96" fill="none" stroke="currentColor" stroke-width="4" opacity=".35"/>
+                <circle cx="220" cy="320" r="8" fill="currentColor" opacity=".5"/>
+                <circle cx="520" cy="170" r="8" fill="currentColor" opacity=".5"/>
+                <circle cx="860" cy="120" r="8" fill="currentColor" opacity=".5"/>
+                <rect x="90" y="76" width="380" height="90" rx="14" fill="currentColor" opacity=".08"/>
+                <text x="120" y="130" fill="currentColor" opacity=".55" font-family="ui-monospace" font-size="26">BVLOS UAV Swarm Mission Design</text>
+              </g>
+            </svg>
+          </div>
+          <div class="projBody">
+            <div class="projTitle">
+              <a href="#cs-bvlos"><strong>BVLOS UAV Swarm Mission Design</strong></a>
+              <span class="meta">UAV Systems Engineer • Sep–Dec 2025</span>
+            </div>
+            <div class="meta">ArduPilot • Python simulation • requirements/CONOPS • risk & regulatory controls</div>
+            <ul class="bullets">
+              <li>Planned BVLOS routes; integrated multispectral payload workflows.</li>
+              <li>Built waypoint/sensor simulator to de-risk mission execution.</li>
+              <li>Delivered deployable package: validated requirements + CONOPS + risk controls.</li>
+            </ul>
+            <div class="tags" aria-label="Tags">
+              <span class="tag">UAV</span><span class="tag">Systems</span><span class="tag">MissionDesign</span><span class="tag">ArduPilot</span><span class="tag">Python</span><span class="tag">V&V</span>
+            </div>
+          </div>
+        </article>
 
-      <div class="item">
-        <div class="topline">
-          <span class="role">PropTech Connect Ltd — Business Development Manager / Client Success / Speaker Coordination</span>
-          <span class="meta">London, UK · May 2024 – Nov 2024</span>
-        </div>
-        <ul>
-          <li>Leveraged 200,000+ B2B network to generate 6+ weekly sponsorship meetings with senior stakeholders</li>
-          <li>Created £12k–£100k opportunities via targeted email/call/LinkedIn outreach</li>
-          <li>Secured 500+ senior executives and managed 90+ speakers; led a 96-person event success team</li>
-        </ul>
-      </div>
+        <!-- Card 2 -->
+        <article class="projCard col-6" role="listitem">
+          <div class="thumb" aria-hidden="true">
+            <svg viewBox="0 0 1200 540" role="img" aria-label="Placeholder thumbnail">
+              <rect width="1200" height="540" fill="none"></rect>
+              <g opacity=".95">
+                <rect x="90" y="96" width="520" height="280" rx="18" fill="currentColor" opacity=".10"/>
+                <path d="M120 330 L 560 330" stroke="currentColor" stroke-width="5" opacity=".35"/>
+                <path d="M150 310 L 220 250 L 310 270 L 420 210 L 520 240" fill="none" stroke="currentColor" stroke-width="5" opacity=".35"/>
+                <text x="120" y="150" fill="currentColor" opacity=".55" font-family="ui-monospace" font-size="26">AI Structural Optimisation</text>
+                <text x="120" y="190" fill="currentColor" opacity=".40" font-family="ui-monospace" font-size="18">R² 0.92 / 0.86 • ~40% mass reduction</text>
+                <rect x="680" y="120" width="430" height="240" rx="18" fill="currentColor" opacity=".08"/>
+                <path d="M720 310 C 780 210, 900 230, 1030 160" fill="none" stroke="currentColor" stroke-width="5" opacity=".30"/>
+              </g>
+            </svg>
+          </div>
+          <div class="projBody">
+            <div class="projTitle">
+              <a href="#cs-ai"><strong>AI-Driven Structural Optimisation</strong></a>
+              <span class="meta">Applied AI Engineer • Nov–Dec 2025</span>
+            </div>
+            <div class="meta">TensorFlow • surrogate modelling • optimisation (SLSQP) • FEA-derived training data</div>
+            <ul class="bullets">
+              <li>Predicted stress fields from thickness inputs (surrogate model).</li>
+              <li>R² = 0.92/0.86 (train/validation).</li>
+              <li>Optimised thickness under yield constraints; ~40% mass reduction.</li>
+            </ul>
+            <div class="tags" aria-label="Tags">
+              <span class="tag">Structures</span><span class="tag">FEA</span><span class="tag">Optimisation</span><span class="tag">ML</span><span class="tag">TensorFlow</span>
+            </div>
+          </div>
+        </article>
 
-      <div class="item">
-        <div class="topline">
-          <span class="role">Hospitality Group — Director (Two Heritage Hospitality Assets)</span>
-          <span class="meta">Neuchâtel, Switzerland / Burgundy, France · Oct 2020 – Present</span>
-        </div>
-        <ul>
-          <li>Led commercial strategy and end-to-end operations; launched a luxury “wealth resort” concept during the pandemic, driving sustained private and corporate demand</li>
-          <li>Secured high-value partnerships (incl. Swiss National Television); managed refurbishment programme and operator onboarding for a 10-key Palladian villa in Switzerland</li>
-          <li>Supported operator selection for a 55-key château in France; managed engagement with major groups (Accor, IHG, Marriott, Hamilton, Chapitre Six)</li>
-        </ul>
+        <!-- Card 3 -->
+        <article class="projCard col-6" role="listitem">
+          <div class="thumb" aria-hidden="true">
+            <svg viewBox="0 0 1200 540" role="img" aria-label="Placeholder thumbnail">
+              <rect width="1200" height="540" fill="none"></rect>
+              <g opacity=".95">
+                <circle cx="280" cy="270" r="160" fill="currentColor" opacity=".08"/>
+                <path d="M280 110 C 520 150, 760 300, 1040 350" fill="none" stroke="currentColor" stroke-width="5" opacity=".32"/>
+                <path d="M330 160 C 520 220, 720 340, 1000 390" fill="none" stroke="currentColor" stroke-width="5" opacity=".22"/>
+                <text x="90" y="120" fill="currentColor" opacity=".55" font-family="ui-monospace" font-size="26">Diffractive Solar Sailing</text>
+                <text x="90" y="160" fill="currentColor" opacity=".40" font-family="ui-monospace" font-size="18">20.4% faster orbit achievement</text>
+              </g>
+            </svg>
+          </div>
+          <div class="projBody">
+            <div class="projTitle">
+              <a href="#cs-sail"><strong>Diffractive Solar Sailing Research</strong></a>
+              <span class="meta">Spaceflight DNC • Oct 2023–Apr 2024</span>
+            </div>
+            <div class="meta">MATLAB • heliocentric dynamics • attitude/Euler-angle trade studies</div>
+            <ul class="bullets">
+              <li>Modelled diffractive sail dynamics for inward spiralling + inclination cranking.</li>
+              <li>Validated target orbit achieved 20.4% faster than reflective sails.</li>
+              <li>Analysed diffraction angle trade-offs (e.g., 112.5°).</li>
+            </ul>
+            <div class="tags" aria-label="Tags">
+              <span class="tag">Space</span><span class="tag">GNC</span><span class="tag">Dynamics</span><span class="tag">MATLAB</span><span class="tag">TradeStudy</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="projCard col-6" role="listitem">
+          <div class="thumb" aria-hidden="true">
+            <svg viewBox="0 0 1200 540" role="img" aria-label="Placeholder thumbnail">
+              <rect width="1200" height="540" fill="none"></rect>
+              <g opacity=".95">
+                <rect x="120" y="110" width="420" height="300" rx="22" fill="currentColor" opacity=".08"/>
+                <rect x="170" y="160" width="320" height="200" rx="18" fill="none" stroke="currentColor" stroke-width="5" opacity=".25"/>
+                <path d="M560 160 L 1040 160" stroke="currentColor" stroke-width="5" opacity=".22"/>
+                <path d="M560 220 L 980 220" stroke="currentColor" stroke-width="5" opacity=".16"/>
+                <path d="M560 280 L 940 280" stroke="currentColor" stroke-width="5" opacity=".12"/>
+                <text x="120" y="90" fill="currentColor" opacity=".55" font-family="ui-monospace" font-size="26">CubeSat Development (GU Orbit)</text>
+                <text x="120" y="450" fill="currentColor" opacity=".40" font-family="ui-monospace" font-size="18">Structure optimisation • FEA • near-space testing support</text>
+              </g>
+            </svg>
+          </div>
+          <div class="projBody">
+            <div class="projTitle">
+              <a href="#cs-cubesat"><strong>CubeSat Development (GU Orbit)</strong></a>
+              <span class="meta">Mechanical Engineer • Sep 2020–Jun 2024</span>
+            </div>
+            <div class="meta">SolidWorks • FEA • structural design • test support</div>
+            <ul class="bullets">
+              <li>Optimised structure for near-space/stratospheric testing.</li>
+              <li>Designed modular frame + radar-reflecting rotational damper; ran FEA.</li>
+              <li>Supported drag sail deployment testing; supported Sep 2023 launch.</li>
+            </ul>
+            <div class="tags" aria-label="Tags">
+              <span class="tag">Space</span><span class="tag">Structures</span><span class="tag">FEA</span><span class="tag">SolidWorks</span><span class="tag">Testing</span>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <div class="footer">
-      <div>© <span id="y"></span> Henri-Alexandre de Croÿ-Solre</div>
-      <div>Built with GitHub Pages · <a href="https://hadecroy.github.io/" target="_blank" rel="noopener">hadecroy.github.io</a></div>
-    </div>
-  </div>
+    <!-- CASE STUDIES -->
+    <section aria-label="Case studies">
+      <div class="sectionHead">
+        <div>
+          <h2>Case study details</h2>
+          <p>Designed for skim-first reading. Visual slots are placeholders you can replace with screenshots (CAD, plots, block diagrams, test photos).</p>
+        </div>
+      </div>
+
+      <!-- CS 1 -->
+      <article id="cs-bvlos" class="case" aria-label="Case study BVLOS UAV Swarm Mission Design">
+        <div class="caseTop">
+          <div class="titleBlock">
+            <h2>BVLOS UAV Swarm Mission Design</h2>
+            <p><strong>Role:</strong> UAV Systems Engineer • <span class="muted">Bristol, UK • Sep 2025 – Dec 2025</span></p>
+          </div>
+          <div class="tags" aria-label="Tools">
+            <span class="tag">ArduPilot</span><span class="tag">Python</span><span class="tag">Systems</span><span class="tag">CONOPS</span><span class="tag">V&V</span>
+          </div>
+        </div>
+
+        <div class="caseGrid">
+          <div class="panel">
+            <h3>Objective / challenge</h3>
+            <ul>
+              <li>Design a BVLOS field campaign using a multi-UAV concept with mapping + human-supervised selective spraying workflows (public-safe summary).</li>
+              <li>Retrofit and integrate multirotors and fixed-wing UAVs for mission execution and payload integration.</li>
+            </ul>
+            <h3 style="margin-top:12px">My approach</h3>
+            <ul>
+              <li>Planned BVLOS routes in ArduPilot; designed mission sequencing and operational controls.</li>
+              <li>Integrated multispectral payload workflows; built a waypoint/sensor simulator in Python to de-risk execution.</li>
+              <li>Delivered a deployable package: validated requirements, CONOPS, and regulatory/risk controls ready for pilot trials.</li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <h3>Results + validation</h3>
+            <ul>
+              <li>Requirements and CONOPS traced through to deliverables for trial readiness.</li>
+              <li>Risk/regulatory controls documented to support BVLOS operations.</li>
+              <li>Simulation tool used to sanity-check waypoint + sensor behaviours prior to deployment.</li>
+            </ul>
+            <h3 style="margin-top:12px">What I’d improve next</h3>
+            <ul>
+              <li>Add automated log parsing + coverage metrics for rapid post-flight analysis (TODO if you implement).</li>
+              <li>Integrate a standard safety case structure and a more formal V&V matrix (if required by the programme).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top: 12px">
+          <div class="gallery" aria-label="Visuals">
+            <figure class="g6">
+              <svg viewBox="0 0 1200 700" role="img" aria-label="Placeholder: mission block diagram">
+                <rect width="1200" height="700" fill="none"></rect>
+                <rect x="70" y="80" width="420" height="220" rx="18" fill="currentColor" opacity=".08"/>
+                <rect x="70" y="340" width="420" height="220" rx="18" fill="currentColor" opacity=".06"/>
+                <rect x="540" y="140" width="590" height="360" rx="18" fill="currentColor" opacity=".06"/>
+                <path d="M490 190 L 540 220" stroke="currentColor" stroke-width="5" opacity=".25"/>
+                <path d="M490 420 L 540 360" stroke="currentColor" stroke-width="5" opacity=".20"/>
+                <text x="110" y="150" fill="currentColor" opacity=".50" font-family="ui-monospace" font-size="22">UAV + payload integration</text>
+                <text x="110" y="410" fill="currentColor" opacity=".50" font-family="ui-monospace" font-size="22">Routes + CONOPS</text>
+                <text x="580" y="210" fill="currentColor" opacity=".50" font-family="ui-monospace" font-size="22">Python waypoint/sensor simulator</text>
+              </svg>
+              <figcaption>Placeholder: mission architecture / block diagram (replace with your diagram)</figcaption>
+            </figure>
+
+            <figure class="g6">
+              <svg viewBox="0 0 1200 700" role="img" aria-label="Placeholder: route map">
+                <rect width="1200" height="700" fill="none"></rect>
+                <path d="M140 560 C 220 400, 310 430, 420 300 C 540 160, 700 240, 860 160 C 980 100, 1040 180, 1080 120" fill="none" stroke="currentColor" stroke-width="6" opacity=".28"/>
+                <circle cx="140" cy="560" r="10" fill="currentColor" opacity=".45"/>
+                <circle cx="420" cy="300" r="10" fill="currentColor" opacity=".45"/>
+                <circle cx="860" cy="160" r="10" fill="currentColor" opacity=".45"/>
+                <rect x="70" y="70" width="520" height="90" rx="18" fill="currentColor" opacity=".06"/>
+                <text x="100" y="125" fill="currentColor" opacity=".50" font-family="ui-monospace" font-size="22">BVLOS route plan (ArduPilot)</text>
+              </svg>
+              <figcaption>Placeholder: route plan screenshot (replace with ArduPilot map / mission plan)</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+
+      <div style="height: 14px"></div>
+
+      <!-- CS 2 -->
+      <article id="cs-ai" class="case" aria-label="Case study AI-driven structural optimisation">
+        <div class="caseTop">
+          <div class="titleBlock">
+            <h2>AI-Driven Structural Optimisation of Cantilever Plates</h2>
+            <p><strong>Role:</strong> Applied AI Engineer • <span class="muted">Bristol, UK • Nov 2025 – Dec 2025</span></p>
+          </div>
+          <div class="tags" aria-label="Tools">
+            <span class="tag">TensorFlow</span><span class="tag">SurrogateModel</span><span class="tag">SLSQP</span><span class="tag">YieldConstraint</span><span class="tag">FEAData</span>
+          </div>
+        </div>
+
+        <div class="caseGrid">
+          <div class="panel">
+            <h3>Objective / challenge</h3>
+            <ul>
+              <li>Minimise mass under combined loading while respecting yield constraints.</li>
+              <li>Reduce compute cost by learning a surrogate model from FEA-derived data.</li>
+            </ul>
+            <h3 style="margin-top:12px">My approach</h3>
+            <ul>
+              <li>Trained a DNN to predict stress fields from thickness inputs (TensorFlow).</li>
+              <li>Achieved R² = 0.92/0.86 (train/validation).</li>
+              <li>Optimised thickness using SLSQP under yield constraints.</li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <h3>Results + validation</h3>
+            <ul>
+              <li>Compliant ~40% mass reduction under yield constraints.</li>
+              <li>Model accuracy quantified via R² on train/validation splits.</li>
+              <li>Proposed digital twin concept with sensor data fusion for predictive maintenance (concept-level).</li>
+            </ul>
+            <h3 style="margin-top:12px">What I’d improve next</h3>
+            <ul>
+              <li>Calibrate surrogate uncertainty (e.g., ensembles) to avoid “confidently wrong” predictions (TODO if you extend).</li>
+              <li>Add verification plots and constraint margins as standard deliverables in the case study visuals.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top: 12px">
+          <div class="gallery" aria-label="Visuals">
+            <figure class="g6">
+              <svg viewBox="0 0 1200 700" role="img" aria-label="Placeholder: training curve">
+                <rect width="1200" height="700" fill="none"></rect>
+                <rect x="90" y="90" width="1020" height="520" rx="18" fill="currentColor" opacity=".06"/>
+                <path d="M140 560 L 140 140 L 1080 140" stroke="currentColor" stroke-width="4" opacity=".20"/>
+                <path d="M170 520 C 320 360, 420 380, 540 290 C 660 210, 760 240, 920 190" fill="none" stroke="currentColor" stroke-width="6" opacity=".28"/>
+                <text x="120" y="640" fill="currentColor" opacity=".45" font-family="ui-monospace" font-size="18">Placeholder: loss/metric curve</text>
+              </svg>
+              <figcaption>Placeholder: training/validation curve + R² summary</figcaption>
+            </figure>
+
+            <figure class="g6">
+              <svg viewBox="0 0 1200 700" role="img" aria-label="Placeholder: thickness map">
+                <rect width="1200" height="700" fill="none"></rect>
+                <rect x="120" y="110" width="960" height="480" rx="22" fill="currentColor" opacity=".06"/>
+                <g opacity=".24">
+                  <rect x="180" y="170" width="160" height="120" rx="12" fill="currentColor"/>
+                  <rect x="360" y="170" width="160" height="120" rx="12" fill="currentColor"/>
+                  <rect x="540" y="170" width="160" height="120" rx="12" fill="currentColor"/>
+                  <rect x="720" y="170" width="160" height="120" rx="12" fill="currentColor"/>
+                  <rect x="900" y="170" width="120" height="120" rx="12" fill="currentColor"/>
+                  <rect x="180" y="310" width="250" height="120" rx="12" fill="currentColor"/>
+                  <rect x="450" y="310" width="250" height="120" rx="12" fill="currentColor"/>
+                  <rect x="720" y="310" width="300" height="120" rx="12" fill="currentColor"/>
+                </g>
+                <text x="150" y="640" fill="currentColor" opacity=".45" font-family="ui-monospace" font-size="18">Placeholder: optimised thickness/stress map</text>
+              </svg>
+              <figcaption>Placeholder: optimised thickness distribution / stress field visual</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+
+      <div style="height: 14px"></div>
+
+      <!-- CS 3 -->
+      <article id="cs-sail" class="case" aria-label="Case study diffractive solar sailing">
+        <div class="caseTop">
+          <div class="titleBlock">
+            <h2>Diffractive Solar Sailing Research Placement</h2>
+            <p><strong>Role:</strong> Spaceflight Dynamics, Navigation & Control Engineer • <span class="muted">Glasgow, UK • Oct 2023 – Apr 2024</span></p>
+          </div>
+          <div class="tags" aria-label="Tools">
+            <span class="tag">MATLAB</span><span class="tag">Dynamics</span><span class="tag">Attitude</span><span class="tag">TradeStudy</span>
+          </div>
+        </div>
+
+        <div class="caseGrid">
+          <div class="panel">
+            <h3>Objective / challenge</h3>
+            <ul>
+              <li>Model diffractive sail dynamics to support heliocentric trajectories (inward spiralling + inclination cranking).</li>
+              <li>Compare performance versus reflective sails under a heuristic force law roll manoeuvre strategy.</li>
+            </ul>
+            <h3 style="margin-top:12px">My approach</h3>
+            <ul>
+              <li>Implemented MATLAB simulation framework for diffractive sail dynamics.</li>
+              <li>Ran attitude (Euler angle) and diffraction angle trade studies.</li>
+              <li>Quantified trajectory outcomes for performance comparison.</li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <h3>Results + validation</h3>
+            <ul>
+              <li>Validated diffractive sails reached target orbit <strong>20.4% faster</strong> than reflective sails.</li>
+              <li>Explored diffraction angle trade-offs (e.g., 112.5°: slightly better radial performance, reduced inclination performance).</li>
+            </ul>
+            <h3 style="margin-top:12px">What I’d improve next</h3>
+            <ul>
+              <li>Add clearer “assumptions & limitations” panel to the public case study (to make scope explicit).</li>
+              <li>Package key plots (time-to-orbit, inclination change, sensitivity) as a 1-page appendix visual.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top: 12px">
+          <div class="gallery" aria-label="Visuals">
+            <figure class="g12">
+              <svg viewBox="0 0 1200 540" role="img" aria-label="Placeholder: trajectory plot">
+                <rect width="1200" height="540" fill="none"></rect>
+                <path d="M170 430 C 320 340, 420 360, 560 290 C 720 210, 840 240, 1030 150" fill="none" stroke="currentColor" stroke-width="7" opacity=".30"/>
+                <path d="M170 450 C 320 380, 420 405, 560 340 C 720 265, 840 295, 1030 220" fill="none" stroke="currentColor" stroke-width="7" opacity=".20"/>
+                <text x="70" y="90" fill="currentColor" opacity=".50" font-family="ui-monospace" font-size="22">Placeholder: trajectory comparison plot</text>
+                <text x="70" y="125" fill="currentColor" opacity=".40" font-family="ui-monospace" font-size="18">Diffractive vs reflective — time to target orbit</text>
+              </svg>
+              <figcaption>Placeholder: key plot (diffractive vs reflective performance)</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+
+      <div style="height: 14px"></div>
+
+      <!-- CS 4 -->
+      <article id="cs-cubesat" class="case" aria-label="Case study CubeSat development">
+        <div class="caseTop">
+          <div class="titleBlock">
+            <h2>CubeSat Development (GU Orbit)</h2>
+            <p><strong>Role:</strong> Mechanical Engineer • <span class="muted">Glasgow, UK • Sep 2020 – Jun 2024</span></p>
+          </div>
+          <div class="tags" aria-label="Tools">
+            <span class="tag">SolidWorks</span><span class="tag">FEA</span><span class="tag">Structures</span><span class="tag">Testing</span>
+          </div>
+        </div>
+
+        <div class="caseGrid">
+          <div class="panel">
+            <h3>Objective / challenge</h3>
+            <ul>
+              <li>Optimise a CubeSat prototype structure for near-space/stratospheric testing.</li>
+              <li>Support subsystem integration and test readiness (e.g., drag sail deployment support).</li>
+            </ul>
+            <h3 style="margin-top:12px">My approach</h3>
+            <ul>
+              <li>Designed a modular frame and a radar-reflecting rotational damper.</li>
+              <li>Performed FEA in SolidWorks to support structural decisions.</li>
+              <li>Supported deployment testing and overall project delivery through to launch support.</li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <h3>Results + validation</h3>
+            <ul>
+              <li>Structural design + FEA support contributed to prototype readiness for testing.</li>
+              <li>Supported drag sail deployment testing; supported successful launch in Sep 2023.</li>
+            </ul>
+            <h3 style="margin-top:12px">What I’d improve next</h3>
+            <ul>
+              <li>Publish a concise “design choices” one-pager (trade-offs + FEA snapshots) for rapid reviewer scan.</li>
+              <li>Add test matrix + pass/fail criteria summary as a visual block.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top: 12px">
+          <div class="gallery" aria-label="Visuals">
+            <figure class="g6">
+              <svg viewBox="0 0 1200 700" role="img" aria-label="Placeholder: CAD render">
+                <rect width="1200" height="700" fill="none"></rect>
+                <rect x="170" y="120" width="860" height="460" rx="26" fill="currentColor" opacity=".06"/>
+                <rect x="250" y="200" width="260" height="280" rx="18" fill="none" stroke="currentColor" stroke-width="6" opacity=".22"/>
+                <rect x="540" y="200" width="410" height="110" rx="18" fill="none" stroke="currentColor" stroke-width="6" opacity=".18"/>
+                <rect x="540" y="350" width="410" height="130" rx="18" fill="none" stroke="currentColor" stroke-width="6" opacity=".18"/>
+                <text x="210" y="640" fill="currentColor" opacity=".45" font-family="ui-monospace" font-size="18">Placeholder: CAD / assembly render</text>
+              </svg>
+              <figcaption>Placeholder: CubeSat structure render (replace with SolidWorks screenshot)</figcaption>
+            </figure>
+
+            <figure class="g6">
+              <svg viewBox="0 0 1200 700" role="img" aria-label="Placeholder: FEA plot">
+                <rect width="1200" height="700" fill="none"></rect>
+                <rect x="120" y="120" width="960" height="460" rx="26" fill="currentColor" opacity=".06"/>
+                <path d="M180 520 C 260 360, 360 430, 470 290 C 600 120, 750 260, 900 160 C 1010 90, 1040 200, 1080 140" fill="none" stroke="currentColor" stroke-width="7" opacity=".24"/>
+                <text x="150" y="640" fill="currentColor" opacity=".45" font-family="ui-monospace" font-size="18">Placeholder: FEA result snapshot</text>
+              </svg>
+              <figcaption>Placeholder: FEA snapshot (replace with stress/displacement plot)</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ALL PROJECTS -->
+    <section id="projects" aria-label="All projects">
+      <div class="sectionHead">
+        <div>
+          <h2>All projects</h2>
+          <p>Filter by role area. With JavaScript off, everything remains readable (no content is hidden permanently).</p>
+        </div>
+        <div class="muted" style="font-size: 12.5px" id="filterStatus" aria-live="polite"></div>
+      </div>
+
+      <div class="filters" role="group" aria-label="Project filters">
+        <button class="fbtn" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="fbtn" type="button" data-filter="MissionDesign" aria-pressed="false">Mission design</button>
+        <button class="fbtn" type="button" data-filter="GNC" aria-pressed="false">GNC / control</button>
+        <button class="fbtn" type="button" data-filter="UAV" aria-pressed="false">UAV / autonomy</button>
+        <button class="fbtn" type="button" data-filter="Structures" aria-pressed="false">Structures / FEA</button>
+        <button class="fbtn" type="button" data-filter="Testing" aria-pressed="false">Testing</button>
+        <button class="fbtn" type="button" data-filter="Optimisation" aria-pressed="false">ML / optimisation</button>
+        <button class="fbtn" type="button" data-filter="Systems" aria-pressed="false">Systems engineering</button>
+      </div>
+
+      <div class="cards" id="projectGrid" role="list">
+        <!-- Each card: keep tight, skimmable, quantified where available -->
+
+        <article class="projCard col-4" role="listitem" data-tags="UAV Systems MissionDesign">
+          <div class="projBody">
+            <div class="projTitle">
+              <strong>BVLOS UAV Swarm Mission Design</strong>
+              <span class="meta">Sep–Dec 2025</span>
+            </div>
+            <div class="meta">UAV Systems Engineer • ArduPilot • Python • CONOPS / risk controls</div>
+            <ul class="bullets">
+              <li>Designed BVLOS field campaign; mapping + supervised selective spraying workflows.</li>
+              <li>Built waypoint/sensor simulator; delivered validated requirements + CONOPS.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">UAV</span><span class="tag">MissionDesign</span><span class="tag">Systems</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="projCard col-4" role="listitem" data-tags="Systems MissionDesign">
+          <div class="projBody">
+            <div class="projTitle">
+              <strong>SBIRS Constellation Re-Flight Mission Design (Case)</strong>
+              <span class="meta">Sep–Dec 2025</span>
+            </div>
+            <div class="meta">Systems & Mission Design Engineer • V-Model • GMAT • ECSS-aligned bid deck</div>
+            <ul class="bullets">
+              <li>Developed CONOPS, requirements, subsystem design, V&V, orbital modelling.</li>
+              <li>Led trade-offs across thermal, data handling, and key subsystems.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Systems</span><span class="tag">MissionDesign</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="projCard col-4" role="listitem" data-tags="Systems MissionDesign">
+          <div class="projBody">
+            <div class="projTitle">
+              <strong>Solar Observation Mission Architecture Review (“Panoptes”)</strong>
+              <span class="meta">Sep–Dec 2025</span>
+            </div>
+            <div class="meta">Mission Systems Reviewer • FEDR critique • traceability + integration risks</div>
+            <ul class="bullets">
+              <li>Assessed alignment: objectives → requirements → CONOPS → architecture → subsystems.</li>
+              <li>Identified architectural/traceability failures; delivered targeted recommendations.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Systems</span><span class="tag">MissionDesign</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="projCard col-4" role="listitem" data-tags="Structures Testing">
+          <div class="projBody">
+            <div class="projTitle">
+              <strong>Aircraft Design & Flight Performance Competition</strong>
+              <span class="meta">Oct 2025</span>
+            </div>
+            <div class="meta">Aerodynamics & Structural Lead</div>
+            <ul class="bullets">
+              <li>Optimised aerofoil camber/thickness and reduced mass via structural simplification.</li>
+              <li><strong>Won</strong> lowest sustained flight speed by <strong>15%</strong>.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Structures</span><span class="tag">Testing</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="projCard col-4" role="listitem" data-tags="Structures Optimisation">
+          <div class="projBody">
+            <div class="projTitle">
+              <strong>AI-Driven Structural Optimisation of Cantilever Plates</strong>
+              <span class="meta">Nov–Dec 2025</span>
+            </div>
+            <div class="meta">TensorFlow • surrogate modelling • SLSQP</div>
+            <ul class="bullets">
+              <li>R² = 0.92/0.86 (train/validation) predicting stress fields.</li>
+              <li>Yield-constrained optimisation achieved compliant <strong>~40% mass reduction</strong>.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Structures</span><span class="tag">Optimisation</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="projCard col-4" role="listitem" data-tags="GNC MissionDesign">
+          <div class="projBody">
+            <div class="projTitle">
+              <strong>Diffractive Solar Sailing Research Placement</strong>
+              <span class="meta">Oct 2023–Apr 2024</span>
+            </div>
+            <div class="meta">Spaceflight DNC • MATLAB • heliocentric dynamics</div>
+            <ul class="bullets">
+              <li>Validated target orbit reached <strong>20.4% faster</strong> vs reflective sails.</li>
+              <li>Trade study: diffraction angle effects (e.g., 112.5°).</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">GNC</span><span class="tag">MissionDesign</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="projCard col-4" role="listitem" data-tags="UAV GNC Optimisation">
+          <div class="projBody">
+            <div class="projTitle">
+              <strong>Autonomous Vehicle Guidance Systems Design</strong>
+              <span class="meta">Feb–Apr 2024</span>
+            </div>
+            <div class="meta">Control + path planning • MATLAB • fmincon • Q-learning</div>
+            <ul class="bullets">
+              <li>Artificial potential fields for collision avoidance.</li>
+              <li>Q-learning (epsilon-greedy), trained over 1000 episodes; scenario for A*/Dijkstra/RRT* integration.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">UAV</span><span class="tag">GNC</span><span class="tag">Optimisation</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="projCard col-4" role="listitem" data-tags="Structures MissionDesign">
+          <div class="projBody">
+            <div class="projTitle">
+              <strong>Utility Helicopter Design (Bell 427 Retrofit)</strong>
+              <span class="meta">Jan–Apr 2024</span>
+            </div>
+            <div class="meta">Head of Tail Rotor Design • BEMT • Fusion 360</div>
+            <ul class="bullets">
+              <li>Tail rotor sized for ~133% torque increase with minimal added mass.</li>
+              <li>Incidence angles (Boeing VR-5 root, NACA0012 tip); twist to reduce thrust disparity/failure risk.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Structures</span><span class="tag">MissionDesign</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="projCard col-4" role="listitem" data-tags="MissionDesign Systems">
+          <div class="projBody">
+            <div class="projTitle">
+              <strong>Hybrid STOL Regional Aircraft Design (“BeEco”)</strong>
+              <span class="meta">Jan–Jun 2024</span>
+            </div>
+            <div class="meta">Performance & mass calculations • MATLAB</div>
+            <ul class="bullets">
+              <li>Hybrid-electric + biofuel architecture; mission performance + fuel fractions modelling.</li>
+              <li>Delivered STOL-compliant concept with ~20% efficiency improvement vs baseline.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">MissionDesign</span><span class="tag">Systems</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="projCard col-4" role="listitem" data-tags="Structures Testing">
+          <div class="projBody">
+            <div class="projTitle">
+              <strong>Vibrational Analysis of Airplane Wing Model</strong>
+              <span class="meta">Oct–Nov 2023</span>
+            </div>
+            <div class="meta">Abaqus FEA + experimental vibration testing</div>
+            <ul class="bullets">
+              <li>Extracted natural modes; validated trends vs oscilloscope-measured amplitude distribution.</li>
+              <li>Explained discrepancies: acoustic effects, supports, material interactions.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Structures</span><span class="tag">Testing</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="projCard col-4" role="listitem" data-tags="Systems MissionDesign">
+          <div class="projBody">
+            <div class="projTitle">
+              <strong>Airbus Design Competition (GU Orbit)</strong>
+              <span class="meta">Dec 2022–Apr 2023</span>
+            </div>
+            <div class="meta">Head of Engineering & In-Orbit Biological Systems</div>
+            <ul class="bullets">
+              <li>Led integration across robotics, bioprinting, materials, thermal regulation, deployment.</li>
+              <li>Designed modular factory concept; <strong>Top 7</strong> finish out of ~300 teams.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Systems</span><span class="tag">MissionDesign</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="projCard col-4" role="listitem" data-tags="Testing">
+          <div class="projBody">
+            <div class="projTitle">
+              <strong>Wind Tunnel Investigation (Bluff Body + Delta Wing)</strong>
+              <span class="meta">Jan–Mar 2023</span>
+            </div>
+            <div class="meta">Aerodynamics & test • MATLAB • 7-hole probe analysis</div>
+            <ul class="bullets">
+              <li>Pressure/wake measurement; lift/drag/separation/vortex mapping.</li>
+              <li>Validated trends vs theoretical models; drag variation vs Reynolds number.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Testing</span><span class="tag">GNC</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="projCard col-4" role="listitem" data-tags="Structures Testing">
+          <div class="projBody">
+            <div class="projTitle">
+              <strong>Stress Concentration Factor Analysis</strong>
+              <span class="meta">Jan–Mar 2023</span>
+            </div>
+            <div class="meta">Strain gauges • FEM • ESDU • Mohr’s circle</div>
+            <ul class="bullets">
+              <li>Benchmarked Kt using empirical, FEM, and ESDU methods.</li>
+              <li>Compared accuracy across approaches using principal stress determination.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Structures</span><span class="tag">Testing</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="projCard col-4" role="listitem" data-tags="GNC">
+          <div class="projBody">
+            <div class="projTitle">
+              <strong>Instrument Landing System (ILS) Lateral Beam Design</strong>
+              <span class="meta">Oct–Nov 2022</span>
+            </div>
+            <div class="meta">Simulink • control tuning • filtering</div>
+            <ul class="bullets">
+              <li>Stabilised faulty ILS by tuning feedback control and signal filtering.</li>
+              <li>Cross-checked Simulink and MATLAB outputs for consistency.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">GNC</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="projCard col-4" role="listitem" data-tags="MissionDesign">
+          <div class="projBody">
+            <div class="projTitle">
+              <strong>Pitot Tube Rankine Fairing Design</strong>
+              <span class="meta">Sep–Dec 2022</span>
+            </div>
+            <div class="meta">Fluid dynamics • MATLAB modelling</div>
+            <ul class="bullets">
+              <li>Simulated potential flow / Rankine fairing fields; validated Bernoulli-based predictions.</li>
+              <li>Achieved correction factor K &gt; 0.99 with tapping distance ~25.33 cm.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">MissionDesign</span><span class="tag">Systems</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="projCard col-4" role="listitem" data-tags="Testing">
+          <div class="projBody">
+            <div class="projTitle">
+              <strong>Acoustic Analysis of Cussons P9010e Turbojet Engine</strong>
+              <span class="meta">Sep–Nov 2022</span>
+            </div>
+            <div class="meta">Fourier analysis • MATLAB • SPL signature</div>
+            <ul class="bullets">
+              <li>Captured SPL distributions, thrust, mass flows; linked thrust/rotational speed to SPL frequency bands.</li>
+              <li>Observed low-frequency noise dominated by shear forces in larger eddies.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Testing</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="projCard col-4" role="listitem" data-tags="Structures Testing">
+          <div class="projBody">
+            <div class="projTitle">
+              <strong>CubeSat Development (GU Orbit)</strong>
+              <span class="meta">Sep 2020–Jun 2024</span>
+            </div>
+            <div class="meta">Mechanical engineer • SolidWorks • FEA • test support</div>
+            <ul class="bullets">
+              <li>Optimised structure for near-space/stratospheric testing; modular frame + damper.</li>
+              <li>Supported drag sail deployment testing; supported Sep 2023 launch.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Structures</span><span class="tag">Testing</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="projCard col-4" role="listitem" data-tags="MissionDesign">
+          <div class="projBody">
+            <div class="projTitle">
+              <strong>Lockheed Martin × Virgin Galactic Scholarship (SSSUK)</strong>
+              <span class="meta">Aug 2019</span>
+            </div>
+            <div class="meta">Space course • satellite tech • aerospace design process</div>
+            <ul class="bullets">
+              <li>Studied satellite technology and JWST spectroscopy; exposure to launch cost drivers and reusability perspectives.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">MissionDesign</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" aria-label="Experience">
+      <div class="sectionHead">
+        <div>
+          <h2>Experience</h2>
+          <p>Primary track: aerospace projects and technical work. Secondary track: leadership & operations (kept intentionally compact).</p>
+        </div>
+      </div>
+
+      <div class="twoCol">
+        <div class="card pad">
+          <h3>Aerospace & technical (selected)</h3>
+          <ul class="bullets" style="margin-top:10px">
+            <li><strong>Diffractive Solar Sailing Research Placement</strong> — validated 20.4% faster target orbit vs reflective sails; MATLAB dynamics + attitude trade studies.</li>
+            <li><strong>CubeSat Development (GU Orbit)</strong> — structural optimisation + FEA support; deployment test support; launch support (Sep 2023).</li>
+            <li><strong>Autonomous Vehicle Guidance</strong> — potential fields + constrained optimisation + Q-learning; MATLAB implementation and scenario testing.</li>
+          </ul>
+          <p class="muted" style="margin:10px 0 0; font-size: 12.5px">
+            Note: detailed deliverables and screenshots can be added per case study (TODO).
+          </p>
+        </div>
+
+        <div class="card pad">
+          <h3>Leadership & Operations (parallel track)</h3>
+          <p class="subtle" style="margin:8px 0 10px">
+            Transferable strengths: delivery discipline, stakeholder handling, data integrity, and operating under pressure.
+          </p>
+          <ul class="bullets" style="margin-top:0">
+            <li><strong>PropTech Connect Ltd</strong> — Head of Finance & Operations & Data Manager (Sep 2024 – Present): 6000+ delegate event; oversee 75%+ of revenue; corrected/optimised 28,000+ broken leads.</li>
+            <li><strong>PropTech Connect Ltd</strong> — Head of Finance & Data Lead (Nov 2024 – Aug 2025): enforced credit control; resolved ticket data errors across ~34% of attendee database.</li>
+            <li><strong>PropTech Connect Ltd</strong> — BD / Client Success (May 2024 – Nov 2024): generated 6+ weekly sponsorship meetings; managed 90+ speakers and a 96-person team.</li>
+            <li><strong>Hospitality Group</strong> — Director (Oct 2020 – Present): commercial strategy + operations for two heritage assets (10-key villa; 55-key château); partnership and operator onboarding support.</li>
+          </ul>
+          <p class="muted" style="margin:10px 0 0; font-size: 12.5px">
+            Optional: add a “Reference letter (PropTech Connect)” PDF link here (TODO in repo). 
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION + SKILLS -->
+    <section id="education" aria-label="Education and skills">
+      <div class="grid2">
+        <div class="card pad">
+          <h2>Education</h2>
+          <ul class="bullets" style="margin-top: 10px">
+            <li><strong>University of Bristol</strong> — MSc Aerospace Engineering <span class="muted">(Sep 2025 – Present)</span></li>
+            <li><strong>University of Glasgow</strong> — BEng (Hons) Aeronautical Engineering <span class="muted">(Sep 2020 – Jun 2024)</span></li>
+            <li><strong>Worth School</strong> — A-Levels AAAA (Maths, Physics, Chemistry, Biology) <span class="muted">(Sep 2015 – Jul 2020)</span></li>
+          </ul>
+
+          <div style="margin-top: 12px">
+            <details>
+              <summary>School details (A-level/GCSE) — expandable</summary>
+              <ul>
+                <li>Prefect & Scholarship: top five students; academic duties across ~700 students</li>
+                <li>Chartered Management Qualification Level 3</li>
+                <li>Additional Mathematics (FSMQ): Second Class</li>
+                <li>GCSEs: A* A* A* A* A* A* A* A A A B (Mathematics, Physics, Chemistry, Biology, French, Spanish, Religious Studies, Latin, History, English Literature, English Language)</li>
+              </ul>
+            </details>
+          </div>
+        </div>
+
+        <div class="card pad">
+          <h2>Skills (tools I’ve used)</h2>
+          <p class="muted" style="margin:8px 0 10px; font-size: 13.5px">Grouped for skimming; expand the case studies with screenshots to prove depth.</p>
+          <div class="tags" aria-label="Skills tags">
+            <span class="tag">MATLAB</span><span class="tag">Simulink</span><span class="tag">Python</span><span class="tag">GMAT</span><span class="tag">ArduPilot</span>
+            <span class="tag">Fusion 360</span><span class="tag">SolidWorks</span><span class="tag">Revit</span>
+            <span class="tag">Abaqus</span><span class="tag">NASTRAN</span><span class="tag">LabVIEW</span>
+            <span class="tag">LaTeX</span>
+          </div>
+
+          <div class="panel" style="margin-top: 12px">
+            <h3>Public-safe portfolio note</h3>
+            <ul>
+              <li>For defence-adjacent work, keep public pages focused on methods + outcomes.</li>
+              <li>Move sensitive detail to a private PDF/appendix shared on request (TODO if needed).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-label="Contact">
+      <div class="sectionHead">
+        <div>
+          <h2>Contact</h2>
+          <p>Default: email + LinkedIn/GitHub. Phone is hidden unless explicitly revealed.</p>
+        </div>
+      </div>
+
+      <div class="twoCol">
+        <div class="card pad">
+          <h3>Direct</h3>
+          <div class="pillrow" style="margin-top: 10px">
+            <a class="pill" href="mailto:[INSERT_EMAIL]">Email: [INSERT_EMAIL]</a>
+            <a class="pill" href="https://www.linkedin.com/in/h-a-de-croy" rel="noopener">LinkedIn</a>
+            <a class="pill" href="https://github.com/hadecroy" rel="noopener">GitHub</a>
+          </div>
+
+          <div style="margin-top: 12px">
+            <button id="phoneBtn" class="btn" type="button">Reveal phone</button>
+            <span id="phoneText" class="muted" style="margin-left:10px; font-family: var(--mono); display:none">[INSERT_PHONE]</span>
+            <p class="muted" style="margin:10px 0 0; font-size: 12.5px">Tip: keep phone off public pages by default; reveal only when needed.</p>
+          </div>
+
+          <div class="panel" style="margin-top: 12px">
+            <h3>Downloads (optional)</h3>
+            <ul>
+              <li><a href="/Henri-Alexandre-de-Croy-Solre-CV.pdf">CV (PDF)</a> — <span class="muted">TODO: add to repo</span></li>
+              <li><a href="/Reference-Letter-PropTech-Connect.pdf">Reference letter (PDF)</a> — <span class="muted">TODO: add to repo</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card pad">
+          <h3>Optional contact form (static)</h3>
+          <p class="muted" style="margin:8px 0 10px; font-size: 13.5px">
+            This form won’t send anywhere unless you add a form service (e.g., Formspree/Netlify Forms). Kept here as a UX option.
+          </p>
+
+          <form>
+            <label class="muted" for="name">Name</label><br/>
+            <input id="name" name="name" type="text" placeholder="Your name" style="width:100%; margin:6px 0 10px; padding:10px 12px; border-radius:14px; border:1px solid var(--border); background: color-mix(in oklab, var(--panel), transparent 6%); color: var(--text)" />
+
+            <label class="muted" for="email">Email</label><br/>
+            <input id="email" name="email" type="email" placeholder="you@example.com" style="width:100%; margin:6px 0 10px; padding:10px 12px; border-radius:14px; border:1px solid var(--border); background: color-mix(in oklab, var(--panel), transparent 6%); color: var(--text)" />
+
+            <label class="muted" for="msg">Message</label><br/>
+            <textarea id="msg" name="msg" rows="5" placeholder="How can I help?" style="width:100%; margin:6px 0 12px; padding:10px 12px; border-radius:14px; border:1px solid var(--border); background: color-mix(in oklab, var(--panel), transparent 6%); color: var(--text)"></textarea>
+
+            <button class="btn primary" type="button" disabled aria-disabled="true" title="Add a form service to enable sending">
+              Send (disabled)
+            </button>
+          </form>
+
+          <p class="muted" style="margin:12px 0 0; font-size: 12.5px">
+            TODO: connect to a form service if you want this functional.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer">
+        <span>© <span id="year"></span> Henri-Alexandre de Croÿ-Solre</span>
+        <span>Built for GitHub Pages • accessible • no tracking</span>
+      </div>
+    </section>
+  </main>
 
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
+    (function(){
+      // Footer year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Theme (respects system by default, but user can override)
+      const root = document.documentElement;
+      const btn = document.getElementById('themeBtn');
+      const stored = localStorage.getItem('theme'); // "light" | "dark" | null
+      if (stored === 'light' || stored === 'dark') root.dataset.theme = stored;
+
+      function setTheme(next){
+        if (!next) {
+          root.removeAttribute('data-theme');
+          localStorage.removeItem('theme');
+          return;
+        }
+        root.dataset.theme = next;
+        localStorage.setItem('theme', next);
+      }
+
+      btn.addEventListener('click', function(){
+        const current = root.dataset.theme || '';
+        // Cycle: system -> dark -> light -> system
+        if (!current) setTheme('dark');
+        else if (current === 'dark') setTheme('light');
+        else setTheme(null);
+      });
+
+      // Phone reveal (kept hidden by default)
+      const phoneBtn = document.getElementById('phoneBtn');
+      const phoneText = document.getElementById('phoneText');
+      phoneBtn.addEventListener('click', function(){
+        const isHidden = phoneText.style.display === 'none';
+        phoneText.style.display = isHidden ? 'inline' : 'none';
+        phoneBtn.textContent = isHidden ? 'Hide phone' : 'Reveal phone';
+      });
+
+      // Project filtering (progressive enhancement)
+      const grid = document.getElementById('projectGrid');
+      const status = document.getElementById('filterStatus');
+      const buttons = Array.from(document.querySelectorAll('.fbtn'));
+      const cards = Array.from(grid.querySelectorAll('[data-tags]'));
+
+      function applyFilter(tag){
+        let shown = 0;
+        cards.forEach(card => {
+          const tags = (card.getAttribute('data-tags') || '').split(/\s+/).filter(Boolean);
+          const match = (tag === 'all') || tags.includes(tag);
+          card.hidden = !match;
+          if (match) shown++;
+        });
+        status.textContent = (tag === 'all')
+          ? `Showing all projects (${shown})`
+          : `Filter: ${tag} • Showing ${shown}`;
+      }
+
+      buttons.forEach(b => {
+        b.addEventListener('click', () => {
+          buttons.forEach(x => x.setAttribute('aria-pressed', 'false'));
+          b.setAttribute('aria-pressed', 'true');
+          applyFilter(b.dataset.filter);
+        });
+      });
+
+      // init
+      applyFilter('all');
+    })();
   </script>
 </body>
 </html>
